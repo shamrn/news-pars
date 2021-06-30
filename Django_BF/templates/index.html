@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="{% url 'refresh_news' %}">Обновить новости</a>
+    <h2>Список новостей</h2>
+    <ul>
+        {% for item in news %}
+        <li>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.category.name }}</p>
+            {% if item.img == 'Отсуствует' %}
+            <p>Новость без изображения</p>
+            {% else %}
+            <img src="{{ item.img }}">
+            {% endif %}
+            <p>{{ item.desc }}</p>
+
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
